@@ -1,0 +1,16 @@
+@import './layout';
+@import './skin';
+
+%service-list > li:hover,
+%service-list > li:focus,
+%service-list > li:active {
+  @extend %service-list-intent;
+}
+
+%service-list > li > a > span {
+  @extend %service-list-header;
+}
+
+%service-list > li > a > ul {
+  @extend %service-list-detail;
+}

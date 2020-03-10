@@ -1,0 +1,4 @@
+@import './service-list/index';
+.service-list {
+  @extend %service-list;
+}
