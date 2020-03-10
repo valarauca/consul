@@ -1,34 +1,17 @@
+{{yield}}
 {{#if (gt items.length 0)}}
-  <TabularCollection @items={{items}} as |item index|>
-    <BlockSlot @name="header">
-      <th style={{remainingWidth}}>Service</th>
-      <th style={{totalWidth}}>
-        Health Checks
+  <ul class="consul-service-list">
+    {{#each items as |item|}}
+    <li>
+      <a href={{href-to routeName item.Name}}>
         <span>
-          <em role="tooltip">The number of health checks for the service on all nodes</em>
-        </span>
-      </th>
-      <th style={{remainingWidth}}>Tags</th>
-    </BlockSlot>
-    <BlockSlot @name="row">
-      <td data-test-service={{item.Name}} style={{remainingWidth}}>
-        <a href={{href-to routeName item.Name}}>
-      {{#let (service/external-source item) as |externalSource| }}
-        {{#if externalSource }}
-          <span data-test-external-source={{externalSource}} style={{concat 'background-image: var(--' externalSource '-icon)'}}></span>
-        {{else}}
-          <span></span>
-        {{/if}}
-      {{/let}}
           {{item.Name}}
-        </a>
-      </td>
-      <td style={{totalWidth}}>
-        <HealthcheckInfo @passing={{item.ChecksPassing}} @warning={{item.ChecksWarning}} @critical={{item.ChecksCritical}} @passingWidth={{passingWidth}} @warningWidth={{warningWidth}} @criticalWidth={{criticalWidth}} />
-      </td>
-      <td style={{remainingWidth}}>
-        <TagList @items={{item.Tags}} />
-      </td>
-    </BlockSlot>
-  </TabularCollection>
+        </span>
+        <YieldSlot @name="metadata" @params={{block-params item}}>
+          {{yield}}
+        </YieldSlot>
+      </a>
+    </li>
+    {{/each}}
+  </ul>
 {{/if}}
