@@ -1,0 +1,16 @@
+@import './layout';
+@import './skin';
+
+%consul-service-list > li:hover,
+%consul-service-list > li:focus,
+%consul-service-list > li:active {
+  @extend %consul-service-list-intent;
+}
+
+%consul-service-list > li > a > span {
+  @extend %consul-service-list-header;
+}
+
+%consul-service-list > li > a > ul {
+  @extend %consul-service-list-detail;
+}

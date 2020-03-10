@@ -1,0 +1,37 @@
+%consul-service-list > li {
+  list-style-type: none;
+  border-top-color: $gray-200;
+  border-right-color: transparent;
+  border-left-color: transparent;
+}
+
+%consul-service-list-intent {
+  border-color: $gray-200;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+%consul-service-list-header {
+  color: $black;
+}
+
+%consul-service-list-detail {
+  color: $gray-500;
+}
+
+%consul-service-list-detail .proxy,
+%consul-service-list-detail .tags {
+  margin-left: 12px;
+}
+
+%consul-service-list-detail .proxy::before {
+  @extend %with-swap-horizontal-mask, %as-pseudo;
+  background-color: $gray-500;
+  margin-right: 4px;
+}
+
+%consul-service-list-detail .tags::before {
+  @extend %with-tag-mask, %as-pseudo;
+  background-color: $gray-500;
+  transform: rotate(-45deg);
+  margin-right: 4px;
+}
