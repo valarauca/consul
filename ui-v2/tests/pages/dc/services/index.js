@@ -1,4 +1,4 @@
-export default function(visitable, clickable, attribute, collection, page, filter) {
+export default function(visitable, clickable, attribute, collection, page, popoverSort) {
   return {
     visit: visitable('/:dc/services'),
     services: collection('[data-test-service]', {
@@ -10,7 +10,7 @@ export default function(visitable, clickable, attribute, collection, page, filte
       name: clickable('a'),
     }),
     navigation: page.navigation,
-    filter: filter,
     home: clickable('[data-test-home]'),
+    sort: popoverSort,
   };
 }

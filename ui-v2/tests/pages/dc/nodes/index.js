@@ -1,4 +1,4 @@
-export default function(visitable, clickable, attribute, collection, filter) {
+export default function(visitable, clickable, attribute, collection, popoverSort) {
   const node = {
     name: attribute('data-test-node'),
     node: clickable('header a'),
@@ -6,6 +6,6 @@ export default function(visitable, clickable, attribute, collection, filter) {
   return {
     visit: visitable('/:dc/nodes'),
     nodes: collection('[data-test-node]', node),
-    filter: filter,
+    sort: popoverSort,
   };
 }

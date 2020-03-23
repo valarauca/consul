@@ -17,7 +17,8 @@ import createCancelable from 'consul-ui/tests/lib/page-object/createCancelable';
 import page from 'consul-ui/tests/pages/components/page';
 import radiogroup from 'consul-ui/tests/lib/page-object/radiogroup';
 import freetextFilter from 'consul-ui/tests/pages/components/freetext-filter';
-import catalogFilter from 'consul-ui/tests/pages/components/catalog-filter';
+import catalogToolbar from 'consul-ui/tests/pages/components/catalog-toolbar';
+import popoverSort from 'consul-ui/tests/pages/components/popover-sort';
 import aclFilter from 'consul-ui/tests/pages/components/acl-filter';
 import intentionFilter from 'consul-ui/tests/pages/components/intention-filter';
 import tokenListFactory from 'consul-ui/tests/pages/components/token-list';
@@ -67,12 +68,10 @@ const roleSelector = roleSelectorFactory(clickable, deletable, collection, alias
 export default {
   index: create(index(visitable, collection)),
   dcs: create(dcs(visitable, clickable, attribute, collection)),
-  services: create(
-    services(visitable, clickable, attribute, collection, page, catalogFilter, radiogroup)
-  ),
-  service: create(service(visitable, attribute, collection, text, catalogFilter, radiogroup)),
+  services: create(services(visitable, clickable, attribute, collection, page, popoverSort)),
+  service: create(service(visitable, attribute, collection, text, catalogToolbar, radiogroup)),
   instance: create(instance(visitable, attribute, collection, text, radiogroup)),
-  nodes: create(nodes(visitable, clickable, attribute, collection, catalogFilter)),
+  nodes: create(nodes(visitable, clickable, attribute, collection, popoverSort)),
   node: create(node(visitable, deletable, clickable, attribute, collection, radiogroup)),
   kvs: create(kvs(visitable, deletable, creatable, clickable, attribute, collection)),
   kv: create(kv(visitable, attribute, submitable, deletable, cancelable, clickable)),
